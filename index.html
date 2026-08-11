@@ -1,66 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/images/icon.png" type="image/png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="script.js">
-    <link rel="stylesheet" href="style.css">
-    <title>NexusLearn</title>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusLearn — Learning built for Ghana's SHS curriculum</title>
+  <link rel="icon" href="images/icon.png" type="image/png">
+
+  <!-- Fonts: Fraunces (display) + Manrope (body/UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-        <div class="kente-top"></div>
-    <div class="container">
-        <h1>Welcome to NexusLearn</h1>
-        
-        <div class="subjects">
-            <a href="learn.html">Core Mathematics</a> |
-            <a href="learn.html">Integrated Science</a> |
-            <a href="learn.html">English</a>
-            
-        </div>
 
-        </div>
-        
-    
-    </div><hr><br><br><br>
-    <section class="hero">
-        <div class="container2">
-        <h1>Akwaaba to NexusLearn!</h1>
-        <p>Discover a fun and engaging way to learn, tailored to the Ghanaian Senior High School curriculum made available to all!</p>
-        
-        <div><a image=".images/africa.jpeg"></a></div>
-        <div class="hero-map-container">
-            <img src="images/icon.png" alt="Map of Africa" class="hero-map">
-        </div><br>
-        <a href="learn.html" class="button">Start Learning Now</a>
-        
+  <div class="woven-band"></div>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="logo">Nexus<span>Learn</span></a>
+
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+
+      <nav class="site-nav">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="learn.html">Subjects</a>
+      </nav>
     </div>
-    
-        
-    </section>
-    <section class="welcome-briefs">
-        <div class="brief-section">
-            <h3>Learn at Your Pace</h3>
-            <p>Engage with interactive lessons and lesson notes anytime, anywhere.</p>
-        </div>
-        <div class="brief-section">
-            <h3>Discover Local Content</h3>
-            <p>Explore subjects relevant to the Ghanaian curriculum.</p>
-        </div>
-        <div class="brief-section">
-            <h3>Unlock Your Potential</h3>
-            <p>Build skills for a brighter future.</p>
-        </div>
-    </section>
+  </header>
 
-    
-    <div class="kente-bottom"></div>
-    <footer>
-        © 2025 NexusLearn
-    </footer>
-    
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-inner" style="display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;">
+
+      <div class="hero-copy" data-reveal>
+        <span class="eyebrow">Akwaaba — welcome</span>
+        <h1>Learning built for Ghana's Senior High School curriculum.</h1>
+        <p>NexusLearn brings your subjects to life with lessons and notes you can study anytime, anywhere — fully tailored to the Ghanaian classroom.</p>
+
+        <div class="hero-actions">
+          <button type="button" class="button button-primary" data-open-modal>Start Learning</button>
+          <a href="learn.html" class="button button-ghost">Browse all subjects</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" data-reveal>
+        <svg class="hero-mark" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="10" y="10" width="100" height="100" rx="14" stroke="currentColor" stroke-width="3"/>
+          <path d="M35 60 L52 77 L86 40" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BRIEF CARDS ============ -->
+  <section class="briefs-section">
+    <div class="wrap">
+      <div class="briefs">
+
+        <div class="brief-card" data-reveal>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <h3>Learn at your pace</h3>
+          <p>Engage with interactive lessons and notes anytime, anywhere.</p>
+        </div>
+
+        <div class="brief-card" data-reveal>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          <h3>Local content</h3>
+          <p>Explore subjects built around the Ghanaian curriculum.</p>
+        </div>
+
+        <div class="brief-card" data-reveal>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l2.5 5.5L20 10l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5z"/></svg>
+          <h3>Unlock your potential</h3>
+          <p>Build skills for a brighter future, one lesson at a time.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="woven-band"></div>
+
+  <footer>
+    © 2025 NexusLearn
+  </footer>
+
+  <!-- ============ SUBJECT-PICKER MODAL ============ -->
+  <div class="modal" id="subjectModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close-button" aria-label="Close">&times;</button>
+      <h2>Find your subject</h2>
+      <p class="modal-sub">Pick a group, then a subject, and we'll take you straight there.</p>
+
+      <label for="subjectGroup">Subject group</label>
+      <select id="subjectGroup">
+        <option value="">All groups</option>
+        <option value="core">Core Subjects</option>
+        <option value="languages">Languages</option>
+        <option value="arts">Arts &amp; Culture</option>
+      </select>
+
+      <label for="subjectDropdown">Subject</label>
+      <select id="subjectDropdown">
+        <option value="">Select a subject</option>
+        <optgroup label="Core Subjects" data-group="core">
+          <option value="mathematics">Mathematics</option>
+          <option value="science">Integrated Science</option>
+          <option value="english">English</option>
+          <option value="social-studies">Social Studies</option>
+        </optgroup>
+        <optgroup label="Languages" data-group="languages">
+          <option value="akan">Ghanaian Languages (Akan)</option>
+          <option value="ga">Ghanaian Languages (Ga)</option>
+        </optgroup>
+        <optgroup label="Arts &amp; Culture" data-group="arts">
+          <option value="visual-arts">Visual Arts</option>
+          <option value="music">Music</option>
+        </optgroup>
+      </select>
+
+      <button type="button" id="gotoSubject" class="button button-primary">Go to subject</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
-
 </html>

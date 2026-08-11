@@ -1,362 +1,548 @@
+/* =====================================================================
+   NEXUSLEARN — STYLESHEET
+   Structure:
+   1. Design tokens (colors, fonts, spacing)
+   2. Reset / base
+   3. Typography
+   4. Layout helpers
+   5. Header / nav
+   6. Woven band (signature motif — replaces kente_top/bottom images)
+   7. Buttons
+   8. Hero (index.html)
+   9. Brief cards (index.html)
+   10. Subject groups + cards (learn.html)
+   11. Modal (subject picker)
+   12. Footer
+   13. Scroll-reveal animation states
+   14. Responsive
+   ===================================================================== */
+
+/* -------------------- 1. DESIGN TOKENS -------------------- */
+:root {
+  /* Backgrounds */
+  --bg: #14110f;
+  --surface: #1e1a16;
+  --surface-2: #26201a;
+  --border: #382f26;
+
+  /* Text */
+  --text: #f5f1e8;
+  --text-muted: #a79e8e;
+
+  /* Accents — pulled from kente cloth */
+  --gold: #d4a72c;
+  --gold-soft: #e9c765;
+  --terracotta: #b33a2e;
+  --forest: #2f6b4f;
+
+  /* Shape / motion */
+  --radius: 10px;
+  --radius-lg: 16px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Type */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* -------------------- 2. RESET / BASE -------------------- */
+* {
+  box-sizing: border-box;
+}
+
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #5d5c5c;
-    background-image: url('images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    /* Center the image */
-    background-repeat: no-repeat;
-    /* Do not repeat the image */
-    background-blend-mode: darken;
-    color: white;
-    overflow-x: hidden;
-
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-.kente-top {
-    background-image: url('images/kente_top.jpeg');
-    /* Path to your top Kente image */
-    background-repeat: repeat-x;
-    /* Repeat horizontally */
-    height: 30px;
+img {
+  max-width: 100%;
+  display: block;
 }
 
-.kente-bottom {
-    background-image: url('images/kente_bottom.jpeg');
-    /* Path to your bottom Kente image */
-    background-repeat: repeat-x;
-    /* Repeat horizontally */
-    height: 30px;
-    /* Adjust height as needed */
-    margin-top: 20px;
-    /* Add some space above the footer */
+a {
+  color: inherit;
 }
 
-.container {
-
-    width: 100%;
-
-
-    margin: 20px auto;
-    padding: 30px;
-    /* Increased padding for better spacing */
-    background-color: rgba(255, 255, 255, 0.8);
-    /* White with 80% opacity */
-    text-align: center;
-    border-radius: 8px;
-    /* Optional: Add rounded corners to the container */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Optional: Add a subtle shadow */
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-.container3 {
-    border: #333;
-    border-radius: 5px;
-
-    width: 100%;
-    margin-top: 0;
-    margin: 20px auto;
-    padding: 30px;
-    /* Increased padding for better spacing */
-    background-color: rgba(255, 255, 255, 0.8);
-    /* White with 80% opacity */
-    text-align: center;
-    border-radius: 8px;
-    /* Optional: Add rounded corners to the container */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Optional: Add a subtle shadow */
+/* -------------------- 3. TYPOGRAPHY -------------------- */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.5em 0;
+  line-height: 1.15;
 }
 
-.container2 {
-    width: 100%;
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+h3 { font-size: 1.25rem; }
 
-    margin: 20px auto;
-    padding: 30px;
-    /* Increased padding for better spacing */
-    background-color: rgba(255, 255, 255, 0.435);
-    /* White with 80% opacity */
-    text-align: center;
-    border-radius: 8px;
-    /* Optional: Add rounded corners to the container */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Optional: Add a subtle shadow */
+p {
+  color: var(--text-muted);
+  margin: 0 0 1em 0;
 }
 
-h1,
-h2,
-h3 {
-    font-size: 2.5em;
-    /* Slightly larger heading */
-    margin-bottom: 15px;
-    color: #333;
-    /* Darker text */
+/* -------------------- 4. LAYOUT HELPERS -------------------- */
+.wrap {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-.hero {
-    padding: 40px 0;
+section {
+  padding: 64px 0;
 }
 
-.hero h1 {
-    font-size: 2.5em;
-    margin-bottom: 15px;
+/* -------------------- 5. HEADER / NAV -------------------- */
+.site-header {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
 }
 
-.hero p {
-    font-size: 1.1em;
-    color: black;
-    margin-bottom: 20px;
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+.site-nav {
+  display: flex;
+  gap: 28px;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s var(--ease);
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-nav a[aria-current="page"] {
+  color: var(--gold-soft);
+}
+
+/* Mobile nav toggle (hidden on desktop) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+/* -------------------- 6. WOVEN BAND (signature motif) -------------------- */
+/* A repeating diagonal-stripe band in the three accent colors.
+   Stands in for kente_top.jpeg / kente_bottom.jpeg so the page
+   never depends on an image that might not exist. */
+.woven-band {
+  height: 10px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    115deg,
+    var(--gold) 0px,
+    var(--gold) 18px,
+    var(--terracotta) 18px,
+    var(--terracotta) 36px,
+    var(--forest) 36px,
+    var(--forest) 54px
+  );
+}
+
+/* -------------------- 7. BUTTONS -------------------- */
 .button {
-    background-color: #ffcc00;
-    /* A more vibrant yellow/gold */
-    color: #333;
-    /* Dark text on the button */
-    padding: 12px 24px;
-    /* Slightly larger button */
-    text-decoration: none;
-
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    /* Smooth hover effect */
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), background-color 0.2s var(--ease);
 }
 
-.button:hover {
-    background-color: #e6b800;
-    /* Darker shade on hover */
+.button-primary {
+  background-color: var(--gold);
+  color: #1a1508;
 }
 
-.subjects {
-    margin-top: 25px;
-    font-size: 1.1em;
-    color: #555;
+.button-primary:hover,
+.button-primary:focus-visible {
+  background-color: var(--gold-soft);
+  transform: translateY(-2px);
 }
 
-.subjects a {
-    display: inline-block;
-    margin: 0 15px;
-    text-decoration: none;
-    color: #007bff;
-    /* A more standard link color */
-    transition: color 0.3s ease;
+.button-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
 }
 
-.subjects a:hover {
-    color: #0056b3;
-    /* Darker shade on hover */
+.button-ghost:hover,
+.button-ghost:focus-visible {
+  border-color: var(--gold);
+  color: var(--gold-soft);
 }
 
-/* ... previous CSS ... */
-
-.welcome-briefs {
-    display: flex;
-    justify-content: space-around;
-    /* Distribute sections evenly */
-    margin-top: 30px;
-    padding: 20px;
+/* -------------------- 8. HERO (index.html) -------------------- */
+.hero {
+  padding: 90px 0 70px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
 }
 
-.brief-section {
-    background-color: rgba(255, 255, 255, 0.8);
-    /* Same translucent white */
-    border-radius: 8px;
-    margin-right: 5px;
-    padding: 20px;
-    text-align: center;
-    width: 30%;
-    /* Approximately equal width for three sections */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Optional shadow */
+.hero-copy .eyebrow {
+  display: inline-block;
+  color: var(--gold-soft);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
 }
 
-.brief-section h3 {
-    color: #333;
-    margin-bottom: 10px;
+.hero-copy h1 {
+  margin-bottom: 18px;
 }
 
-.brief-section p {
-    color: #555;
-    font-size: 0.95em;
+.hero-copy p {
+  font-size: 1.1rem;
+  max-width: 46ch;
+  margin-bottom: 30px;
 }
 
-hero-map-container {
-    text-align: center;
-    /* Ensure the image stays centered */
-    margin-bottom: 20px;
-    /* Add some space below the map */
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
-.hero-map {
-    max-width: 300px;
-    height: auto;
-    animation: pulse 2s infinite alternate;
-    /* Apply the pulse animation */
-    transform-origin: center center;
-    /* Set the origin for scaling */
+/* Decorative ribbon panel replacing the old broken <a image="..."> element
+   and the mismatched icon.png "map" image */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  background: repeating-linear-gradient(
+    115deg,
+    var(--gold) 0px,
+    var(--gold) 14px,
+    transparent 14px,
+    transparent 28px
+  );
+  opacity: 0.12;
+}
+
+.hero-visual .hero-mark {
+  width: 46%;
+  color: var(--gold-soft);
+  animation: pulse 2.4s infinite alternate var(--ease);
 }
 
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-
-    100% {
-        transform: scale(1.05);
-        opacity: 1;
-    }
+  0%   { transform: scale(1);    opacity: 0.85; }
+  100% { transform: scale(1.05); opacity: 1; }
 }
 
-/* ... previous CSS ... */
-@media (max-width: 390px),
-(max-width: 844px) {
-
-    .container,
-    .container2,
-    .container3 {
-        width: 98%;
-        padding: 10px;
-        margin: 10px auto;
-    }
-
-    .hero h1,
-    h1,
-    h2,
-    h3 {
-        font-size: 1.5em;
-    }
-
-    .hero-map {
-        max-width: 180px;
-    }
-
-    .welcome-briefs {
-        flex-direction: column;
-        padding: 5px;
-        margin-top: 10px;
-    }
-
-    .brief-section {
-        width: 95%;
-        margin: 10px auto 0 auto;
-        padding: 10px;
-    }
-
-    .subjects a {
-        margin: 0 5px;
-        font-size: 0.95em;
-    }
-
-    .kente-top,
-    .kente-bottom {
-        height: 18px;
-    }
-
-    footer {
-        font-size: 0.8em;
-        padding: 10px 0;
-    }
-
-    .modal-content {
-        width: 95%;
-        margin: 30% auto;
-        padding: 10px;
-    }
+/* -------------------- 9. BRIEF CARDS (index.html) -------------------- */
+.briefs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-/* Modal Styles */
+.brief-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+}
+
+.brief-card .icon {
+  width: 34px;
+  height: 34px;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.brief-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.brief-card p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* -------------------- 10. SUBJECT GROUPS + CARDS (learn.html) -------------------- */
+.subjects-intro {
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto 48px;
+}
+
+.subjects-intro p {
+  margin: 0;
+}
+
+.subject-group {
+  margin-bottom: 48px;
+}
+
+.subject-group-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--gold-soft);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.subject-group-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.subject-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  scroll-margin-top: 100px; /* so anchor jumps land below the sticky-feeling header */
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.subject-card h3 {
+  margin-bottom: 6px;
+}
+
+.subject-card p {
+  font-size: 0.92rem;
+  margin-bottom: 18px;
+}
+
+.subject-card .button {
+  padding: 9px 18px;
+  font-size: 0.88rem;
+}
+
+/* Highlight a card when arrived at via #anchor (modal or direct link) */
+.subject-card:target {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 167, 44, 0.18);
+}
+
+/* -------------------- 11. MODAL (subject picker) -------------------- */
 .modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: rgba(10, 8, 6, 0.7);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal.is-open {
+  display: flex;
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    /* 15% down and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    /* Could be more or less, depending on screen size */
-    border-radius: 8px;
-    position: relative;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 420px;
+  padding: 32px;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 6px;
+}
+
+.modal-content .modal-sub {
+  font-size: 0.9rem;
+  margin-bottom: 24px;
 }
 
 .close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px;
 }
 
 .close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.close-button:focus-visible {
+  color: var(--text);
 }
 
-label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
+.modal-content label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 18px 0 6px;
 }
 
-select {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    /* Prevent padding from increasing width */
+.modal-content select {
+  display: block;
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background-color: var(--surface-2);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
 }
 
-#gotoSubject {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1em;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+.modal-content .button {
+  width: 100%;
+  margin-top: 24px;
+  text-align: center;
 }
 
-#gotoSubject:hover {
-    background-color: #0056b3;
-}
-
-/* ... remaining CSS ... */
-
-/* ... remaining CSS ... */
+/* -------------------- 12. FOOTER -------------------- */
 footer {
-    text-align: center;
+  text-align: center;
+  padding: 28px 0;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
 
-    padding: 20px 0;
-    width: 100%;
-    font-size: 0.9em;
-    margin-bottom: 0px;
-    color: #777;
-    background-color: rgba(255, 255, 255, 0.7);
-    /* Slightly translucent footer */
+/* -------------------- 13. SCROLL-REVEAL STATES -------------------- */
+/* Elements start slightly lowered + transparent, script.js adds
+   .is-visible via IntersectionObserver as they enter the viewport */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -------------------- 14. RESPONSIVE -------------------- */
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    aspect-ratio: 16 / 9;
+    order: -1;
+  }
+
+  .briefs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  section {
+    padding: 44px 0;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    padding: 16px 24px;
+    gap: 16px;
+    display: none;
+  }
+
+  .site-header {
+    position: relative;
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .hero {
+    padding: 50px 0 40px;
+  }
+
+  .modal-content {
+    padding: 24px;
+  }
 }
