@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        window.location.href = `learn.html#${selectedSubject}`;
+        window.location.href = selectedSubject;
       });
     }
   }
