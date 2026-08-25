@@ -8,7 +8,8 @@
    1. Mobile nav toggle
    2. Subject-picker modal (index.html)
    3. Hero mark pulse speed on resize
-   4. Scroll-reveal animation
+   4. Form tabs (subject pages)
+   5. Scroll-reveal animation
    ===================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -106,7 +107,26 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", adjustAnimationSpeed);
   }
 
-  /* -------------------- 4. SCROLL-REVEAL ANIMATION -------------------- */
+  /* -------------------- 4. FORM TABS (subject pages) -------------------- */
+  const formTabs = document.querySelectorAll(".form-tab");
+
+  if (formTabs.length) {
+    formTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const targetId = tab.getAttribute("aria-controls");
+        const targetPanel = document.getElementById(targetId);
+        if (!targetPanel) return;
+
+        formTabs.forEach((t) => t.setAttribute("aria-selected", "false"));
+        document.querySelectorAll(".form-panel").forEach((p) => p.classList.remove("is-active"));
+
+        tab.setAttribute("aria-selected", "true");
+        targetPanel.classList.add("is-active");
+      });
+    });
+  }
+
+  /* -------------------- 5. SCROLL-REVEAL ANIMATION -------------------- */
   const revealTargets = document.querySelectorAll("[data-reveal]");
 
   if (revealTargets.length && "IntersectionObserver" in window) {

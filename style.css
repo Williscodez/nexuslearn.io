@@ -15,6 +15,7 @@
    12. Footer
    13. Scroll-reveal animation states
    14. Responsive
+   15. Subject page (breadcrumb, form tabs, topic list)
    ===================================================================== */
 
 /* -------------------- 1. DESIGN TOKENS -------------------- */
@@ -284,7 +285,6 @@ section {
 
 .hero-visual .hero-mark {
   width: 46%;
-  color: var(--gold-soft);
   animation: pulse 2.4s infinite alternate var(--ease);
 }
 
@@ -544,5 +544,150 @@ footer {
 
   .modal-content {
     padding: 24px;
+  }
+}
+
+/* -------------------- 15. SUBJECT PAGE (breadcrumb, form tabs, topic list) -------------------- */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.2s var(--ease);
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible {
+  color: var(--gold-soft);
+}
+
+.breadcrumb .current {
+  color: var(--text);
+}
+
+.subject-header {
+  margin-bottom: 40px;
+}
+
+.subject-header .eyebrow {
+  display: inline-block;
+  color: var(--gold-soft);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.subject-header p {
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* Form 1 / 2 / 3 tabs */
+.form-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+
+.form-tab {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 6px;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.form-tab:hover,
+.form-tab:focus-visible {
+  color: var(--text);
+}
+
+.form-tab[aria-selected="true"] {
+  color: var(--gold-soft);
+  border-bottom-color: var(--gold);
+}
+
+.form-panel {
+  display: none;
+}
+
+.form-panel.is-active {
+  display: block;
+}
+
+.topic-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.topic-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+}
+
+.topic-row .topic-info h3 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.topic-row .topic-info p {
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.topic-row .topic-link {
+  flex-shrink: 0;
+  text-decoration: none;
+  color: var(--gold-soft);
+  font-weight: 600;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.topic-row .topic-link:hover,
+.topic-row .topic-link:focus-visible {
+  color: var(--gold);
+}
+
+@media (max-width: 640px) {
+  .topic-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .form-tabs {
+    gap: 4px;
+    overflow-x: auto;
+  }
+
+  .form-tab {
+    white-space: nowrap;
   }
 }
