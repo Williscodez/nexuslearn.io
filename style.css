@@ -385,6 +385,26 @@ section {
   font-size: 0.88rem;
 }
 
+.subject-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.curriculum-link {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s var(--ease);
+}
+
+.curriculum-link:hover,
+.curriculum-link:focus-visible {
+  color: var(--gold-soft);
+}
+
 /* Highlight a card when arrived at via #anchor (modal or direct link) */
 .subject-card:target {
   border-color: var(--gold);
