@@ -114,6 +114,8 @@ section {
 .site-header {
   padding: 20px 0;
   border-bottom: 1px solid var(--border);
+  position: relative;
+  z-index: 50;
 }
 
 .site-header .wrap {
@@ -544,10 +546,6 @@ footer {
     padding: 16px 24px;
     gap: 16px;
     display: none;
-  }
-
-  .site-header {
-    position: relative;
   }
 
   .site-nav.is-open {
