@@ -17,6 +17,7 @@
    14. Responsive
    15. Subject page (breadcrumb, form tabs, topic list)
    16. Progress tracking (checkboxes, badges, summaries)
+   17. Site search (toggle button + overlay)
    ===================================================================== */
 
 /* -------------------- 1. DESIGN TOKENS -------------------- */
@@ -773,5 +774,145 @@ footer {
     display: block;
     margin-left: 0;
     font-size: 0.72rem;
+  }
+}
+
+/* -------------------- 17. SITE SEARCH (toggle button + overlay) -------------------- */
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.search-toggle:hover,
+.search-toggle:focus-visible {
+  color: var(--gold-soft);
+  border-color: var(--gold);
+}
+
+.search-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background-color: rgba(10, 8, 6, 0.75);
+  align-items: flex-start;
+  justify-content: center;
+  padding: 90px 20px 20px;
+}
+
+.search-overlay.is-open {
+  display: flex;
+}
+
+.search-panel {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 520px;
+  padding: 28px;
+  position: relative;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-panel .search-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.search-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background-color: var(--surface-2);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: var(--font-body);
+  margin-bottom: 16px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.search-results li + li {
+  margin-top: 6px;
+}
+
+.search-results a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-decoration: none;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background-color: var(--surface-2);
+  transition: background-color 0.2s var(--ease);
+}
+
+.search-results a:hover,
+.search-results a:focus-visible {
+  background-color: var(--border);
+}
+
+.search-result-title {
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.search-result-sub {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.search-hint {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 12px 14px;
+}
+
+@media (max-width: 640px) {
+  .search-overlay {
+    padding: 70px 16px 16px;
+  }
+
+  .search-panel {
+    padding: 22px;
   }
 }
