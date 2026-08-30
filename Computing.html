@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computing — NexusLearn</title>
+  <link rel="icon" href="images/icon.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="woven-band"></div>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="logo">Nexus<span>Learn</span></a>
+
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="learn.html" aria-current="page">Subjects</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ SUBJECT CONTENT ============ -->
+  <section>
+    <div class="wrap">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="learn.html">Subjects</a>
+        <span>/</span>
+        <span class="current">Computing</span>
+      </nav>
+
+      <div class="subject-header" data-reveal>
+        <span class="eyebrow">Elective subject</span>
+        <h1>Computing</h1>
+        <p>Programming, algorithms, and computer science fundamentals, through lessons and notes built around the Ghanaian Senior High School computing syllabus.</p>
+        <a href="https://nacca.gov.gh/wp-content/uploads/2025/04/Computing-Curriculum.pdf" class="curriculum-link" target="_blank" rel="noopener">View the official NaCCA curriculum (PDF)</a>
+      </div>
+
+      <!-- Form tabs -->
+      <div role="tablist" class="form-tabs" aria-label="Select a form">
+        <button class="form-tab" role="tab" id="tab-form1" aria-controls="panel-form1" aria-selected="true">Form 1</button>
+        <button class="form-tab" role="tab" id="tab-form2" aria-controls="panel-form2" aria-selected="false">Form 2</button>
+        <button class="form-tab" role="tab" id="tab-form3" aria-controls="panel-form3" aria-selected="false">Form 3</button>
+      </div>
+
+      <!-- Form 1 -->
+      <div class="form-panel is-active" id="panel-form1" role="tabpanel" aria-labelledby="tab-form1">
+        <ul class="topic-list">
+          <li class="topic-row" data-reveal>
+            <div class="topic-info">
+              <h3>Introduction to programming concepts</h3>
+              <p>How programs are written and executed.</p>
+            </div>
+            <a href="#" class="topic-link">View notes</a>
+          </li>
+
+          <li class="topic-row" data-reveal>
+            <div class="topic-info">
+              <h3>Algorithms and flowcharts</h3>
+              <p>Planning a solution before you code it.</p>
+            </div>
+            <a href="#" class="topic-link">View notes</a>
+          </li>
+
+          <li class="topic-row" data-reveal>
+            <div class="topic-info">
+              <h3>Introduction to a programming language</h3>
+              <p>Writing your first working programs.</p>
+            </div>
+            <a href="#" class="topic-link">View notes</a>
+          </li>
+
+          <li class="topic-row" data-reveal>
+            <div class="topic-info">
+              <h3>Data types and variables</h3>
+              <p>Storing and working with different kinds of data.</p>
+            </div>
+            <a href="#" class="topic-link">View notes</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Form 2 -->
+      <div class="form-panel" id="panel-form2" role="tabpanel" aria-labelledby="tab-form2">
+        <ul class="topic-list">
+          <li class="topic-row" data-reveal>
+            <div class="topic-info">
+              <h3>Control structures</h3>
+              <p>Loops and conditionals that direct a program's flow.</p>
+            </div>
+            <a href="#" class="topic-link">View notes</a>
+          </li>
+
+          <li class="topic-row" data-reveal>
+            <div class="topic-info">
+              <h3>Functions and modular programming</h3>
+              <p>Breaking a program into reusable pieces.</p>
+            </div>
+            <a href="#" class="topic-link">View notes</a>
+          </li>
+
+          <li class="topic-row" data-reveal>
+            <div class="topic-info">
+              <h3>Introduction to data structures</h3>
+              <p>Organizing data efficiently in a program.</p>
+            </div>
+            <a href="#" class="topic-link">View notes</a>
+          </li>
+
+          <li class="topic-row" data-reveal>
+            <div class="topic-info">
+              <h3>Problem-solving with code</h3>
+              <p>Turning real problems into working solutions.</p>
+            </div>
+            <a href="#" class="topic-link">View notes</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Form 3 -->
+      <div class="form-panel" id="panel-form3" role="tabpanel" aria-labelledby="tab-form3">
+        <ul class="topic-list">
+          <li class="topic-row" data-reveal>
+            <div class="topic-info">
+              <h3>Object-oriented programming basics</h3>
+              <p>Structuring code around objects and classes.</p>
+            </div>
+            <a href="#" class="topic-link">View notes</a>
+          </li>
+
+          <li class="topic-row" data-reveal>
+            <div class="topic-info">
+              <h3>Databases and SQL basics</h3>
+              <p>Storing and querying data with SQL.</p>
+            </div>
+            <a href="#" class="topic-link">View notes</a>
+          </li>
+
+          <li class="topic-row" data-reveal>
+            <div class="topic-info">
+              <h3>Web development fundamentals</h3>
+              <p>Building simple, functional web pages.</p>
+            </div>
+            <a href="#" class="topic-link">View notes</a>
+          </li>
+
+          <li class="topic-row" data-reveal>
+            <div class="topic-info">
+              <h3>Software development project</h3>
+              <p>Planning and building a complete small project.</p>
+            </div>
+            <a href="#" class="topic-link">View notes</a>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="woven-band"></div>
+
+  <footer>
+    © 2025 NexusLearn
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
