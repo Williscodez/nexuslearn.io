@@ -741,6 +741,12 @@ footer {
   text-decoration-color: var(--forest);
 }
 
+/* Highlight a topic row when arrived at via #anchor (search result) */
+.topic-row:target {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 167, 44, 0.18);
+}
+
 .tab-progress {
   display: inline-block;
   margin-left: 6px;

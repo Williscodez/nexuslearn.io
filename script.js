@@ -850,6 +850,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const topicId = slugify(titleEl.textContent);
       row.dataset.topicId = topicId;
+      // A real id (not just a data attribute) makes each topic a genuine
+      // anchor — this is what lets search deep-link straight to it.
+      if (!row.id) row.id = topicId;
 
       const label = document.createElement("label");
       label.className = "topic-complete";
@@ -883,6 +886,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     updateSummaries();
+
+    // Topic ids are only assigned above, at runtime — so if the page was
+    // opened with a #topic-id in the URL (e.g. from search), the browser's
+    // own automatic anchor-scroll already ran (and found nothing) before
+    // this code executed. Do it ourselves once the id actually exists.
+    if (window.location.hash) {
+      const targetRow = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      if (targetRow) {
+        requestAnimationFrame(() => {
+          targetRow.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+    }
   }
 
   // --- learn.html: a small progress badge on each subject card, once started ---
@@ -983,11 +999,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       NEXUSLEARN_SEARCH_INDEX.forEach((subject) => {
         if (subject.name.toLowerCase().includes(q)) {
-          matches.push({ label: subject.name, sub: "Subject", file: subject.file });
+          matches.push({ label: subject.name, sub: "Subject", file: subject.file, hash: "" });
         }
         subject.topics.forEach((topic) => {
           if (topic.toLowerCase().includes(q)) {
-            matches.push({ label: topic, sub: subject.name, file: subject.file });
+            // Same slugify used on the subject page itself when it assigns
+            // each topic row's id — so this anchor is guaranteed to match.
+            matches.push({ label: topic, sub: subject.name, file: subject.file, hash: slugify(topic) });
           }
         });
       });
@@ -1003,7 +1021,7 @@ document.addEventListener("DOMContentLoaded", () => {
       matches.slice(0, 20).forEach((match) => {
         const item = document.createElement("li");
         const link = document.createElement("a");
-        link.href = match.file;
+        link.href = match.hash ? `${match.file}#${match.hash}` : match.file;
         link.innerHTML = `<span class="search-result-title">${match.label}</span><span class="search-result-sub">${match.sub}</span>`;
         item.appendChild(link);
         resultsList.appendChild(item);
