@@ -16,6 +16,7 @@
    13. Scroll-reveal animation states
    14. Responsive
    15. Subject page (breadcrumb, form tabs, topic list)
+   16. Progress tracking (checkboxes, badges, summaries)
    ===================================================================== */
 
 /* -------------------- 1. DESIGN TOKENS -------------------- */
@@ -707,5 +708,70 @@ footer {
 
   .form-tab {
     white-space: nowrap;
+  }
+}
+
+/* -------------------- 16. PROGRESS TRACKING (checkboxes, badges, summaries) -------------------- */
+.topic-complete {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.topic-complete input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.topic-row {
+  gap: 14px;
+}
+
+.topic-row.is-complete {
+  border-color: var(--forest);
+}
+
+.topic-row.is-complete .topic-info h3 {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--forest);
+}
+
+.tab-progress {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.form-tab[aria-selected="true"] .tab-progress {
+  color: var(--gold-soft);
+}
+
+.subject-progress-summary {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: var(--gold-soft);
+  font-weight: 600;
+}
+
+.card-progress-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--forest);
+  background-color: rgba(47, 107, 79, 0.15);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+@media (max-width: 640px) {
+  .tab-progress {
+    display: block;
+    margin-left: 0;
+    font-size: 0.72rem;
   }
 }
