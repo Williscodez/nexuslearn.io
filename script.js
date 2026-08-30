@@ -894,6 +894,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.location.hash) {
       const targetRow = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
       if (targetRow) {
+        // The row might be inside a Form 2/3 panel that's currently
+        // display:none — scrolling to a hidden element does nothing, so
+        // switch to its tab first (reusing the existing tab-click logic
+        // from section 4) before scrolling.
+        const panel = targetRow.closest(".form-panel");
+        if (panel && !panel.classList.contains("is-active")) {
+          const ownerTab = document.getElementById(panel.getAttribute("aria-labelledby"));
+          if (ownerTab) ownerTab.click();
+        }
+
         requestAnimationFrame(() => {
           targetRow.scrollIntoView({ behavior: "smooth", block: "center" });
         });
